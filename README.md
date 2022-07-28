@@ -3,7 +3,7 @@ Onemanager-PHP ‘s tool (JavaScript)
 
 
 ## How to use
-`git clone https://github.com/AnHiAo/om.js`
+`git clone https://github.com/AnHiAo/om.js && cd om.js`
 ## step-1
 ``` cmd
     npm install
