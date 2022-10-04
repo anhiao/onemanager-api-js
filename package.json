@@ -1,6 +1,6 @@
 {
-  "name": "om.js",
-  "version": "1.0.0",
+  "name": "onemanager-api-js",
+  "version": "1.0.1",
   "main": "index.js",
   "type": "module",
   "scripts": {

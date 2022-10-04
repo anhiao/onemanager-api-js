@@ -11,6 +11,9 @@ export default class {
         })
         this.log("初始化完毕,请调用'login'方法登录用户")
     }
+    getLog(text){
+        return (`[om-${this.domain}] ${text} (${new Date().toLocaleTimeString()})`)   
+    }
     log(text){
         console.log(`[om-${this.domain}] ${text} (${new Date().toLocaleTimeString()})`)
     }
@@ -72,12 +75,15 @@ for (let start = 0; start < file.size; start += chunkSize) {
                 
       
   }, body: chunk});
-  console.log(await result.text());
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write(this.getLog(`bytes ${start}-${
+                        start+chunkSize >= file.size ? file.size-1 :start+chunkSize
+                    }/${file.size}`));
 };
 
-
     await this.omAjax("GET","",dirpath+`?action=del_upload_cache&filelastModified=${filelastModified}&filesize=${this.getFileSize(filepath)}&filename=${filename}`);
-
+    this.log("\n上传文件完成")
     }
     async rmdir(){}
     async mkdir(dirname,dirpath){
