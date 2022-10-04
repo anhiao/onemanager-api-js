@@ -5,7 +5,7 @@
 <br/><br/>
 
 ``` js
-    import Omjs from './index.js';
+    import Omjs from 'onemanager-api-js';
     (async ()=>{
         const omjs = new Omjs("<your url><?your path>","<your login password>") ; /* https://drive.google.com  Aa123456*/
         await omjs.login():
