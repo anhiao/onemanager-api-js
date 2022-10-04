@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "fetch-blob": "^3.2.0",
     "node-fetch": "^3.2.9",
     "sha1": "^1.1.1"
   }
