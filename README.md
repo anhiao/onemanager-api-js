@@ -1,5 +1,3 @@
-# om.js
-Onemanager-PHP ‘s tool (JavaScript)
 
 
 ## How to use
