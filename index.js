@@ -26,7 +26,7 @@ export default class {
                     "cookie":this.isLogin ? this.userCookie : "",
                     "accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                     "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36",
-                    "content-type":"application/x-www-form-urlencoded;charset=UTF-8",
+                    //"content-type":"application/x-www-form-urlencoded;charset=UTF-8",
                     "x-requested-with":"XMLHttpRequest"
                 }
             }))
@@ -59,8 +59,11 @@ export default class {
         const result = await this.omAjax("POST",encodeURI(`upbigfilename=${filename}&filesize=${this.getFileSize(filepath)}&filelastModified=${filelastModified}&filemd5=&_admin=${this.storageCookie}`),dirpath+"?action=upbigfile");
         const result_upload_url = (await result.json())['uploadUrl']
         const file = blobFromSync(filepath)
-        const chunkSize = 1024 * 1024*10;
-for (let start = 0; start < file.size; start += chunkSize) {
+        let chunkSize = 10485759;
+        // console.log(file.size);
+        // console.log(this.getFileSize(filepath))
+for (let start = 0; start < file.size; start += chunkSize+1) {
+
   const chunk = file.slice(start, start + chunkSize + 1)
   let result = await fetch(result_upload_url, {method: 'put', headers:{
                     "Content-Range":`bytes ${start}-${
@@ -75,11 +78,12 @@ for (let start = 0; start < file.size; start += chunkSize) {
                 
       
   }, body: chunk});
-    process.stdout.clearLine();
-    process.stdout.cursorTo(0);
+    // process.stdout.clearLine();
+    // process.stdout.cursorTo(0);
+    process.stdout.write(await result.text() + "\r");
     process.stdout.write(this.getLog(`bytes ${start}-${
                         start+chunkSize >= file.size ? file.size-1 :start+chunkSize
-                    }/${file.size}`));
+                    }/${file.size} \r`));
 };
 
     await this.omAjax("GET","",dirpath+`?action=del_upload_cache&filelastModified=${filelastModified}&filesize=${this.getFileSize(filepath)}&filename=${filename}`);
