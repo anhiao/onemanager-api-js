@@ -3,6 +3,7 @@
     npm install onemanager-api-js
 ```
 <br/><br/>
+example
 
 ``` js
     import Omjs from 'onemanager-api-js';
