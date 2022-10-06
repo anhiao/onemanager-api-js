@@ -3,7 +3,6 @@
     npm install onemanager-api-js
 ```
 <br/><br/>
-example
 
 ``` js
     import Omjs from 'onemanager-api-js';
@@ -15,8 +14,8 @@ example
         [om-drive.aneme.cc] 登录成功 (7:50:47 PM) 
         */
         
-        await omjs.mkdir(<dirname>);
-        await omjs.upload(<filepath>,<filename>,<dirpath>);
+        await omjs.mkdir(<dirname>,<curDirPath>); // omjs.mkdir(test,"/")   new dirname & make where
+        await omjs.upload(<filepath>,<filename>,<dirpath>); // omjs.upload("./test.mp4","test.mp4","/")  local file path & upfile name & upwhere
         ...
     })
     
