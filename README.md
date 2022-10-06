@@ -15,7 +15,7 @@
         */
         
         await omjs.mkdir(<dirname>,<curDirPath>); /* omjs.mkdir(test,"/")   new dirname & make where */
-        await omjs.upload(<filepath>,<filename>,<dirpath>); // omjs.upload("./test.mp4","test.mp4","/")  /* local file path & upfile name & upwhere */
+        await omjs.upload(<filepath>,<filename>,<dirpath>); /* omjs.upload("./test.mp4","test.mp4","/")   local file path & upfile name & upwhere */
         ...
     })
     
